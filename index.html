@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teacher File Library</title>
+<style>
+:root{--bg:#f5f7fb;--card:#fff;--text:#172033;--muted:#667085;--border:#e4e7ec;--accent:#315efb}
+*{box-sizing:border-box} body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{padding:38px 20px;background:#172033;color:#fff} .wrap{max-width:1050px;margin:auto}
+h1{margin:0 0 8px;font-size:32px} header p{margin:0;color:#d0d5dd}
+main{padding:28px 20px}.search{width:100%;padding:15px 16px;border:1px solid var(--border);border-radius:12px;font-size:16px;margin-bottom:24px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;text-decoration:none;color:inherit;display:block;transition:.15s}
+.card:hover{transform:translateY(-2px);box-shadow:0 8px 25px #00000012;border-color:#c7d2fe}
+.icon{font-size:30px;margin-bottom:12px}.card h2{font-size:19px;margin:0 0 7px}.card p{margin:0;color:var(--muted);font-size:14px}
+.notice{margin-top:25px;padding:16px;border-radius:12px;background:#eef2ff;color:#243b8f;font-size:14px}
+footer{padding:25px 20px;text-align:center;color:var(--muted);font-size:13px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<h1>📚 Teacher File Library</h1>
+<p>Notes • Worksheets • Question Papers • Activities • Resources</p>
+</div></header>
+<main class="wrap">
+<input id="search" class="search" type="search" placeholder="Search Class 7, Chemistry, worksheets...">
+<div id="grid" class="grid">
+<a class="card" data-search="class 6 science chemistry physics worksheets activities" href="class6/"><div class="icon">📘</div><h2>Class 6</h2><p>Science resources</p></a>
+<a class="card" data-search="class 7 chemistry physics worksheets activities" href="class7/"><div class="icon">📗</div><h2>Class 7</h2><p>Chemistry • Physics • Worksheets</p></a>
+<a class="card" data-search="class 8 chemistry physics biology worksheets activities" href="class8/"><div class="icon">📙</div><h2>Class 8</h2><p>Science resources</p></a>
+<a class="card" data-search="class 9 science chemistry physics worksheets" href="class9/"><div class="icon">📕</div><h2>Class 9</h2><p>Science resources</p></a>
+<a class="card" data-search="class 10 science chemistry physics board worksheets" href="class10/"><div class="icon">📓</div><h2>Class 10</h2><p>Board preparation</p></a>
+<a class="card" data-search="msc chemistry organic physical spectroscopy" href="msc-chemistry/"><div class="icon">🧪</div><h2>MSc Chemistry</h2><p>Advanced chemistry resources</p></a>
+</div>
+<div class="notice">Public website: do not upload private, confidential, copyrighted, or sensitive files that you do not have permission to publish.</div>
+</main>
+<footer>Teacher File Library • Hosted with GitHub Pages</footer>
+<script>
+const input=document.getElementById('search');
+const cards=[...document.querySelectorAll('.card')];
+input.addEventListener('input',()=>{
+ const q=input.value.toLowerCase().trim();
+ cards.forEach(c=>c.classList.toggle('hidden',q && !c.dataset.search.includes(q)));
+});
+</script>
+</body>
+</html>
